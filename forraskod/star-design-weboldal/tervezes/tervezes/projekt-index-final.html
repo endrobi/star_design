@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projekt Tervező – Star Design</title>
+    <!-- Google Fonts – Montserrat -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="projekt-style-final.css?v=2" />
+  </head>
+  <body>
+    <div class="main-container">
+
+      <!-- =============================================
+           HALADÁSJELZŐ SÁV (progress bar)
+           ============================================= -->
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+
+
+      <!-- =============================================
+           LÉPÉS INDIKÁTOROK (1–7 körök)
+           ============================================= -->
+      <div class="step-indicators" id="stepIndicators">
+        <!-- JavaScript generálja -->
+      </div>
+
+
+      <!-- =============================================
+           FŐ KÁRTYA – az aktuális lépés tartalma
+           ============================================= -->
+      <div class="card-container">
+        <div id="formContent">
+          <!-- JavaScript generálja a lépéseket -->
+        </div>
+      </div>
+
+      <!-- =============================================
+           SEGÍTSÉG SZÖVEG az oldal alján
+           Kérdés esetén e-mail link.
+           ============================================= -->
+      <div class="help-text">
+        Kérdésed van? Írj nekünk:
+        <a href="mailto:monikajobs22@gmail.com">monikajobs22@gmail.com</a>
+      </div>
+
+    </div><!-- /.main-container -->
+
+
+    <!-- =============================================
+         SIKERES KÜLDÉS MODAL
+         Alapból display:none, csak küldés után jelenik meg.
+         showSuccessModal() függvény jeleníti meg (projekt-script-final.js)
+         ============================================= -->
+    <div id="successModal" class="modal" style="display: none;">
+      <div class="modal-content success">
+        <div class="modal-icon">✅</div>
+        <h2>Sikeresen elküldve!</h2>
+        <p>Köszönjük! Móni 24–48 órán belül válaszolni fog.</p>
+        <p class="project-id">
+          Projektszám: <strong id="projectId"></strong>
+        </p>
+        <!-- Újratöltés → visszaállítja az üres tervező formot -->
+        <button onclick="location.reload()" class="btn-primary">
+          Új projekt tervezése
+        </button>
+      </div>
+    </div>
+
+
+    <!-- =============================================
+         HIBA MODAL
+         ============================================= -->
+    <div id="errorModal" class="modal" style="display: none;">
+      <div class="modal-content error">
+        <div class="modal-icon">❌</div>
+        <h2>Hiba történt</h2>
+        <p id="errorMessage">Kérlek próbáld újra később!</p>
+        <button onclick="closeErrorModal()" class="btn-secondary">
+          Rendben
+        </button>
+      </div>
+    </div>
+
+    <!-- =============================================
+         VISSZA GOMB 
+         ============================================= -->
+    <a href="../index.html" class="back-button">
+      ← Vissza a főoldalra
+    </a>
+
+    <!-- =============================================
+         JAVASCRIPT BETÖLTÉSE
+         ============================================= -->
+    <script src="projekt-script-final.js"></script>
+
+  </body>
+</html>

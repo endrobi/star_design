@@ -1,0 +1,1168 @@
+/* =============================================================
+   style.css – Star Design weboldal főstíluslapja
+   =============================================================
+   Tartalom (sorrendben):
+     1.  CSS változók (gyökér szintű)
+     2.  Alapértelmezések (reset + body)
+     3.  Konténer segédosztály
+     4.  Fejléc (rögzített, felül)
+     5.  Hamburger menü (mobilos navigáció)
+     6.  Hero szekció
+     7.  Szolgáltatások szekció
+     8.  Rólam szekció
+     9.  Vélemények szekció
+     10. Portfólió szekció
+     11. Kapcsolat szekció (űrlap + info)
+     12. Visszajelzés üzenetek (siker / hiba)
+     13. Lábléc
+     14. "Tervez itt!" animált gomb
+   ============================================================= */
+
+
+/* =============================================================
+   1. CSS VÁLTOZÓK
+   Ezeket a változókat az egész stíluslapon használjuk.
+   Ha módosítani kell egy színt, csak itt kell megváltoztatni.
+   ============================================================= */
+:root {
+  --accent:    #F39C12; /* narancs – gombok, kiemelések */
+  --dark:      #516588; /* kékesszürke – háttérszínek */
+  --muted:     #ECF0F1; /* világosszürke – panelek, háttér */
+  --text:      #011111; /* szinte fekete – főszöveg, címek */
+  --text1:     #62636A; /* közép szürke – leírószöveg */
+  --max-width: 1400px;  /* maximális oldalszélesség */
+}
+
+
+/* =============================================================
+   2. ALAPÉRTELMEZÉSEK (RESET + BODY)
+   ============================================================= */
+
+/* Box-sizing: az elemek mérete a keretet is tartalmazza */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  /* Sötét háttérszín: ha a hero és a fejléc között rés jelenne meg
+     mobilon, ne fehér, hanem sötét szín látsszon át */
+  background-color: #516588;
+  font-family: 'Montserrat', sans-serif;
+  color: var(--text);
+}
+
+body {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+
+/* =============================================================
+   3. KONTÉNER SEGÉDOSZTÁLY
+   ============================================================= */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 80px 20px;
+}
+
+
+/* =============================================================
+   4. FEJLÉC
+   ============================================================= */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  min-height: 80px;         
+  background: var(--accent);
+  z-index: 1000;
+}
+
+/* Fejléc belső elrendezése: logó bal, navigáció jobb */
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+  min-height: 80px;   
+  flex-wrap: nowrap;       
+  gap: 10px;                   
+}
+
+/* Logó konténer */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0; 
+}
+
+.logo img {
+  height: 80px;
+  width: auto;
+}
+
+.logo span {
+  font-weight: 400;
+}
+
+/* Navigációs menü – asztali nézetben vízszintes sor */
+.main-nav {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;        
+  flex-wrap: nowrap;
+}
+
+.main-nav a {
+  margin-left: 30px;
+  color: #111;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* --- Fejléc reszponzív (tablet, 992px alatt) --- */
+@media (max-width: 992px) {
+  .header-inner {
+    padding: 0 15px;
+  }
+  .logo img {
+    height: 45px;
+  }
+  .main-nav {
+    gap: 15px;
+  }
+  .main-nav a {
+    font-size: 13px;
+  }
+}
+
+/* --- Fejléc reszponzív (mobil, 768px alatt) ---
+   Csak a padding csökken, a menü elrejtését a hamburger blokk kezeli */
+@media (max-width: 768px) {
+  .header-inner {
+    padding: 0 10px;
+  }
+  .logo img {
+    height: 40px;
+  }
+}
+
+
+/* =============================================================
+   5. HAMBURGER MENÜ
+   Csak 768px alatt jelenik meg a gomb.
+   ============================================================= */
+
+/* A gomb alapból rejtett – asztali nézetben nem kell */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  margin-left: auto;    
+  z-index: 1100;        
+}
+
+/* A három vízszintes vonal */
+.hamburger span {
+  display: block;
+  width: 26px;
+  height: 3px;
+  background: #111;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+/* X animáció – megnyitáskor a .open osztály kerül rá */
+.hamburger.open span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* --- Hamburger mobilnézet ---
+   JAVÍTÁS: 768px → 1024px, mert 768-1024px között a nav
+   összeszorult és nem fért el. 1024px alatt mindig hamburger jelenik meg. */
+@media (max-width: 1024px) {
+
+  /* Hamburger gomb megjelenik */
+  .hamburger {
+    display: flex;
+  }
+
+  /* Navigáció: alapból rejtett, .open osztályra lenyílik */
+  .main-nav {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    background: var(--accent);
+    padding: 10px 0 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 999;
+  }
+
+  .main-nav.open {
+    display: flex;
+  }
+
+  /* Menüpontok – nagyobb érintési felület mobilon */
+  .main-nav a {
+    margin-left: 0;
+    padding: 12px 20px;
+    font-size: 16px;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .main-nav a:last-child {
+    border-bottom: none;
+  }
+
+  /* "Tervez itt!" gomb mobilon teljes szélességű */
+  .nav-tervez-btn {
+    margin: 10px 20px 0;
+    width: calc(100% - 40px);
+    text-align: center;
+  }
+}
+
+
+/* =============================================================
+   6. HERO SZEKCIÓ
+   ============================================================= */
+.hero {
+  position: relative;
+  min-height: 100vh;        
+  margin-top: 0;        
+  padding-top: 80px;    
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Háttérkép: kitölti a teljes hero területet*/
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 110%;
+  height: 110%;
+  object-fit: cover;
+  object-position: 40% center; 
+  filter: grayscale(15%) brightness(100%);
+  z-index: 1;
+}
+
+/* Overlay konténer: a háttérkép felett helyezi el a tartalmat */
+.hero-overlay {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  padding: 0 20px;
+}
+
+/* Nagy logó a hero közepén*/
+.hero-logo-wrapper {
+  position: relative;
+  z-index: 3;
+  margin-top: 60px;
+  margin-bottom: 1rem;
+}
+
+.hero-logo {
+  max-width: 420px;
+  height: auto;
+  width: 100%;
+}
+
+/* Főcím  */
+.hero-text-wrapper {
+  position: relative;
+  z-index: 3;
+  transform: translateY(-110px);
+}
+
+.hero-text {
+  font-family: 'La Belle Aurore', cursive;
+  font-size: 5rem;
+  font-weight: 500;
+  color: #fff;
+  margin: 0;
+}
+
+/* CTA gomb konténere */
+.hero-btn-wrapper {
+  position: relative;
+  z-index: 3;
+  transform: translateY(-110px);
+}
+
+/* CTA gomb stílusa */
+.btn.primary {
+  background: var(--accent);
+  color: #111;
+  font-weight: bold;
+  padding: 12px 40px;
+  border-radius: 10px;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+/* Hover: sötétebb narancs szín */
+.btn.primary:hover {
+  background: #d4850f;
+  transform: translateY(-2px);
+}
+
+/* --- Hero reszponzív (tablet, 992px alatt) --- */
+@media (max-width: 992px) {
+  .hero {
+    height: 90vh;
+  }
+  .hero-logo {
+    max-width: 350px;
+  }
+  .hero-text {
+    font-size: 3.5rem;
+  }
+  .hero-text-wrapper {
+    transform: translateY(-80px);
+  }
+  .hero-btn-wrapper {
+    transform: translateY(-30px);
+  }
+  .btn.primary {
+    padding: 10px 30px;
+    font-size: 14px;
+  }
+}
+
+/* --- Hero reszponzív (mobil, 768px alatt) --- */
+@media (max-width: 768px) {
+  .hero {
+    height: 100vh;
+  }
+  .hero-logo {
+    max-width: 280px;
+  }
+  .hero-text {
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
+  .hero-text-wrapper {
+    transform: translateY(-40px);
+  }
+  .hero-btn-wrapper {
+    transform: translateY(-10px);
+  }
+  .btn.primary {
+    padding: 10px 25px;
+    font-size: 13px;
+  }
+}
+
+
+/* =============================================================
+   7. SZOLGÁLTATÁSOK SZEKCIÓ
+   ============================================================= */
+.services {
+  padding: 40px 20px 80px;
+  background-color: #f5f5f5;
+}
+
+.services h2 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 60px;
+  color: var(--text);
+}
+
+/* Auto-fit grid: annyi oszlop fér el, amennyire van hely */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Egyedi kártya */
+.service-card {
+  background: white;
+  padding: 40px 30px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+}
+
+/* Hover: felemelkedik a kártya */
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Ikon konténer a kártya tetején */
+.service-icon {
+  width: 80px;
+  height: 200px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  transition: all 0.3s;
+}
+
+/* Hover: ikon enyhén nagyobb és elfordul */
+.service-card:hover .service-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.service-card h3 {
+  margin-bottom: 16px;
+  color: var(--text);
+  font-size: 20px;
+}
+
+.service-card p {
+  color: var(--text1);
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+
+/* =============================================================
+   8. RÓLAM SZEKCIÓ
+   ============================================================= */
+.about {
+  background-color: var(--dark);
+  color: var(--text);
+  padding: 80px;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  max-width: 100%;
+  margin: 0 auto;
+  display: grid;
+}
+
+/* Profilkép: kitölti a rendelkezésre álló területet */
+.about-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;    
+  border-radius: 10px;
+}
+
+/* Hover: árnyékot kap a kép */
+.about-image:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(243, 156, 18, 0.4);
+}
+.about-content {
+  margin-top: -40px;
+}
+
+.about-content h2 {
+  font-size: 36px;
+  margin-bottom: 40px;
+  text-align: left;
+}
+
+.about-content p {
+  line-height: 1.8;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+/* "Kattints ide" gomb */
+.about-button {
+  background-color: var(--accent);
+  color: #000;
+  padding: 12px 25px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 10px;
+  display: inline-block;
+  margin-top: 100px;
+  transition: all 0.3s;
+}
+
+.about-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(243, 156, 18, 0.4);
+}
+
+/* --- Rólam reszponzív (tablet, 992px alatt) --- */
+@media (max-width: 992px) {
+  .about {
+    gap: 40px;
+    padding: 80px 20px;
+  }
+  .about-image {
+    height: 300px;
+  }
+  .about-content h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+  }
+  .about-content p {
+    font-size: 17px;
+  }
+}
+
+/* --- Rólam reszponzív (mobil, 768px alatt) --- */
+@media (max-width: 768px) {
+  .about {
+    grid-template-columns: 1fr; /* egy oszlop mobilon */
+    text-align: center;
+    gap: 30px;
+    padding: 60px 20px;
+  }
+  .about-image {
+    max-width: 250px;
+    margin: 0 auto;
+  }
+  .about-content h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .about-content p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+  .about-button {
+    padding: 10px 25px;
+    font-size: 16px;
+    margin-top: 20px;
+  }
+}
+
+
+/* =============================================================
+   9. VÉLEMÉNYEK SZEKCIÓ
+   ============================================================= */
+.testimonials {
+  padding: 80px 20px;
+  background-color: #f5f5f5;
+  text-align: center;
+}
+
+/* Pulzáló ikon a szekció tetején */
+.testimonials-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px;
+  background-color: var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  animation: pulse 2s infinite;
+}
+
+.testimonials h2 {
+  font-size: 36px;
+  margin-bottom: 40px;
+  color: var(--text);
+}
+
+/* Kártyák flex konténere */
+.testimonials-container {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;          
+  justify-content: center;
+  max-width: 1200px;
+  margin: 40px auto 0;
+  padding: 0 20px;
+}
+
+/* Vélemény kártyák közös stílusa */
+.testimonials-content1,
+.testimonials-content2,
+.testimonials-content3 {
+  flex: 1;
+  min-width: 280px;
+  max-width: 350px;
+  background-color: #ffffff;
+  border: 2px solid var(--accent);
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover: kártyák enyhén felemelkednek */
+.testimonials-content1:hover,
+.testimonials-content2:hover,
+.testimonials-content3:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Idézet szövege */
+.testimonials-content1 p:first-child,
+.testimonials-content2 p:first-child,
+.testimonials-content3 p:first-child {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--text1);
+  line-height: 1.6;
+  margin-bottom: 15px;
+  font-size: 15px;
+}
+
+/* Idéző neve (jobb alsó sarokba igazítva, narancs) */
+.testimonials-content1 p:last-child,
+.testimonials-content2 p:last-child,
+.testimonials-content3 p:last-child {
+  font-weight: bold;
+  color: var(--accent);
+  text-align: right;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+/* --- Vélemények reszponzív (tablet, 992px alatt) --- */
+@media (max-width: 992px) {
+  .testimonials-container {
+    gap: 20px;
+  }
+  .testimonials-content1,
+  .testimonials-content2,
+  .testimonials-content3 {
+    min-width: 250px;
+  }
+}
+
+/* --- Vélemények reszponzív (mobil, 768px alatt) --- */
+@media (max-width: 768px) {
+  .testimonials-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .testimonials-content1,
+  .testimonials-content2,
+  .testimonials-content3 {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+
+/* =============================================================
+   10. PORTFÓLIÓ SZEKCIÓ
+   ============================================================= */
+.portfolio {
+  padding: 40px 20px 80px;
+  background: var(--muted);
+}
+
+.portfolio h2 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 40px;
+}
+
+/* Auto-fit grid: 340px minimum kártyaszélesség */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* Portfólió kártya */
+.portfolio-item {
+  background: var(--dark);
+  color: var(--text);
+  padding: 18px;
+  border-radius: 8px;
+  text-align: center;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hover: kártya felemelkedik */
+.portfolio-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Kártya képe – rögzített magasság, levágja a felesleget */
+.portfolio-item img {
+  max-width: 100%;
+  height: 200px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+/* "Nézd meg" gomb */
+.portfolio-button {
+  background-color: var(--accent);
+  color: #000;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 10px;
+  display: inline-block;
+  transition: all 0.3s;
+  margin-top: auto;
+}
+
+/* Hover: jobbra tolódik a gomb */
+.portfolio-button:hover {
+  transform: translateX(5px);
+  box-shadow: 0 4px 15px rgba(243, 156, 18, 0.3);
+}
+
+/* --- Portfólió reszponzív (tablet, 1024px alatt) ---
+   JAVÍTÁS: mobilon a 4 oszlop összecsúszik, ezért
+   kisebb képernyőkön kevesebb oszlopra váltunk. */
+@media (max-width: 1024px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 oszlop tableten */
+  }
+}
+
+@media (max-width: 600px) {
+  .portfolio-grid {
+    grid-template-columns: 1fr; /* 1 oszlop mobilon */
+  }
+}
+
+
+/* =============================================================
+   11. KAPCSOLAT SZEKCIÓ
+   ============================================================= */
+.contact {
+  background-color: var(--dark);
+  padding: 50px 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.contact h2 {
+  color: var(--text);
+  font-size: 32px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.contact p {
+  color: var(--text);
+  line-height: 1.8;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Kerek ikon doboz pattogó animációval */
+.info-icon {
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  overflow: hidden;
+  font-size: 40px;
+  animation: bounce 2s infinite;
+}
+
+.info-icon img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+}
+
+/* --- Kapcsolati űrlap ---
+   JAVÍTÁS: max-width: 480px hozzáadva – a form ne nyúljon ki
+   teljes szélességre nagy képernyőn, legyen fix méretű. */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 480px;   /* fix szélesség minden nézetben */
+  width: 100%;
+  margin: 0 auto;     /* középre igazítás */
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  font-family: inherit;
+  transition: all 0.3s;
+}
+
+/* Fókusz esetén narancs árnyék + kismértékű felemelkedés */
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(243, 156, 18, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Szöveges beviteli mező: átméretezhető (függőlegesen) */
+.contact-form textarea {
+  min-height: 152px;
+  resize: vertical;
+}
+
+/* Fejlécek az ikon alatt */
+.contact-form-wrapper h2,
+.info-content h2 {
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+/* Küldés gomb */
+.submit-button {
+  background-color: var(--accent);
+  color: #000;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s;
+}
+
+.submit-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(243, 156, 18, 0.4);
+}
+
+.submit-button:active {
+  transform: translateY(-1px);
+}
+
+/* --- Elérhetőségi adatok oldal --- */
+.contact-info {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.info-content {
+  text-align: center;
+}
+
+/* Sor: ikon + szöveg/link egymás mellett */
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 2px;
+}
+
+.contact-item a {
+  color: white !important;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.contact-item a:hover {
+  color: var(--accent) !important;
+}
+
+/* Ikon mérete a kapcsolat szekcióban */
+.icon {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  background: none;
+  border: none;
+}
+
+/* "Megterveznéd?" alcím blokk */
+.kapcsolat-content {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.kapcsolat-content .about-button {
+  margin-top: 10px;
+}
+
+/* Rejtett spam-csapda mező (CSS-sel elrejtve, honeypot) */
+.hidden {
+  position: absolute;
+  left: -9999px;
+}
+
+/* Pattogó animáció – info-icon használja */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+/* --- Kapcsolat reszponzív (mobil, 900px alatt) ---
+   JAVÍTÁS: mobilon az elérhetőség rész nem volt középen.
+   text-align: center és align-items: center hozzáadva. */
+@media (max-width: 900px) {
+  .contact {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .contact-info {
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;  /* vízszintesen középre */
+    align-items: center;
+  }
+  .info-content {
+    width: 100%;
+    text-align: center;       /* szövegek középre */
+  }
+  .contact-item {
+    justify-content: center;  /* ikon + link sor középre */
+  }
+  .contact-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;      /* form wrapper középre */
+  }
+}
+
+
+/* =============================================================
+   12. VISSZAJELZÉS ÜZENETEK (SIKER / HIBA)
+   ============================================================= */
+
+/* Visszajelzés doboz konténer */
+.form-message {
+  max-width: 700px;
+  margin: 14px auto 0;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Sikeres küldés – zöld */
+.success {
+  background: #27ae60;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+}
+
+/* Hiba – piros */
+.error {
+  background: #e74c3c;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+}
+
+
+/* =============================================================
+   13. LÁBLÉC
+   ============================================================= */
+footer {
+  background-color: var(--muted);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 40px 80px;
+  flex-wrap: wrap;      /* mobilon egymás alá kerülnek */
+}
+
+/* Bal oldali logó */
+.footer-logo {
+  flex: 1;
+  min-width: 300px;
+}
+
+.footer-logo img {
+  max-width: 200px;
+  height: auto;
+  display: block;
+}
+
+/* Középső elérhetőség */
+.footer-contact {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-contact h3 {
+  margin-bottom: 10px;
+  color: var(--text);
+}
+
+.footer-contact a {
+  color: var(--text1);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* Jobb oldali navigációs linkek */
+.footer-links {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-links h3 {
+  margin-bottom: 10px;
+  color: var(--text);
+}
+
+.footer-links a {
+  color: var(--text1);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 8px;
+  transition: all 0.3s;
+}
+
+.footer-links a:hover {
+  color: #000;
+}
+
+/* Dekorációs ikon jobb oldalon */
+.footer-icon {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-icon img {
+  max-width: 250px;
+  height: auto;
+  display: block;
+}
+
+
+/* =============================================================
+   14. "TERVEZ ITT!" ANIMÁLT GOMB A FEJLÉCBEN
+   ============================================================= */
+
+/* Shimmer animáció: fénysáv balról jobbra fut */
+@keyframes shimmerRun {
+  0%,  30% { left: -60%; opacity: 0; }
+  31%      { opacity: 1; }
+  44%      { left: 120%; opacity: 1; }
+  45%      { opacity: 0; }
+  100%     { left: 120%; opacity: 0; }
+}
+
+/* SVG körvonal animáció: dash fut körbe */
+@keyframes svgRun {
+  0%   { stroke-dashoffset: 260; opacity: 1; }
+  24%  { stroke-dashoffset: -50; opacity: 1; }
+  25%  { stroke-dashoffset: -50; opacity: 0; }
+  99%  { stroke-dashoffset: 260; opacity: 0; }
+  100% { stroke-dashoffset: 260; opacity: 0; }
+}
+
+/* Gomb alap stílusa */
+.nav-tervez-btn {
+  position: relative;
+  display: inline-block;
+  margin-left: 30px;
+  padding: 6px 14px;
+  font-weight: 700;
+  font-size: inherit;
+  color: #111 !important;
+  text-decoration: none;
+  white-space: nowrap;
+  background: var(--accent);
+  border: 2px solid #c47d00;
+  border-radius: 8px;
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+/* Shimmer réteg  */
+.nav-tervez-btn::before {
+  content: '';
+  position: absolute;
+  top: -10%; left: -60%;
+  width: 40%; height: 120%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.75), transparent);
+  transform: skewX(-15deg);
+  animation: shimmerRun 14s linear infinite;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* SVG körvonal réteg */
+.nav-tervez-btn svg {
+  position: absolute;
+  top: -2px; left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  pointer-events: none;
+  overflow: visible;
+}
+
+.nav-tervez-btn svg rect {
+  fill: none;
+  stroke: white;
+  stroke-width: 2.5;
+  stroke-dasharray: 50 210;
+  stroke-dashoffset: 260;
+  animation: svgRun 14s linear infinite;
+  filter: drop-shadow(0 0 3px rgba(255,255,255,0.9));
+}
+
+/* Szöveg a z-rétegek felett */
+.nav-tervez-btn span {
+  position: relative;
+  z-index: 2;
+}
+
+/* Hover: sötétebb narancs */
+.nav-tervez-btn:hover {
+  background: #e08800;
+  transition: background 0.2s ease;
+}
+/* Az oldal egységes betöltése, figyelembe véve a fejléc magasságát*/
+section {
+  scroll-margin-top: 80px;
+}

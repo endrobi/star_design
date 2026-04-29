@@ -1,0 +1,339 @@
+ :root {
+  --accent: #F39C12;
+  --dark: #516588;
+  --muted: #ECF0F1;
+  --text: #011111;
+}
+
+/* ALAP */
+body {
+    background-color: var(--dark);
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+}
+
+/* HEADER */
+.header-strip {
+    background: var(--accent);
+    padding: 15px 20px;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* FŐ TARTALOM */
+.main-content {
+    margin-top: 80px;
+    padding: 20px;
+}
+
+/* GRID */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* KÁRTYA */
+.stat-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+/* LISTA */
+.list-item {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.list-item:last-child {
+    border: none;
+}
+
+/* GOMBOK */
+.btn-open {
+    background: #3498db;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+.btn {
+   background: var(--accent);
+  color: #111;
+  font-weight: bold;
+  padding: 12px 40px;
+  border-radius: 10px;
+  text-decoration: none;
+  display: inline-block;
+
+   transform: translateY(-2px);
+}
+
+    
+.btn-add {
+    background: #2ecc71;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.btn-delete {
+    background: #e74c3c;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+.btn-all {
+    display: block;
+    margin-top: 15px;
+    text-align: center;
+    color: var(--accent);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.btn-all:hover {
+    text-decoration: underline;
+}
+.logout-btn,
+.btn-delete {
+    background: #e74c3c;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.logout-btn:hover,
+.btn-delete:hover {
+    background: #c0392b;
+}
+/* GOMB CSOPORT */
+.btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* GALÉRIA */
+.gallery-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+}
+
+
+.gallery-row {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+    overflow-x: auto;
+}
+
+.gallery-item {
+    flex: 0 0 150px;
+    text-align: center;
+}
+
+.gallery-item img {
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+.full-width {
+    grid-column: span 2;
+}
+/* FORM */
+.form-container {
+    max-width: 600px;
+    margin: 50px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.form-input {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+/* TÁBLÁZAT */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+}
+
+th {
+    background: var(--accent);
+    color: white;
+}
+/* =========================================
+   ÜZENET MEGYNITÁSA OLDAL (ADMIN)
+   ========================================= */
+
+.main {
+    padding: 20px;
+    font-family: sans-serif;
+}
+
+.message-box {
+    background: #f4f4f4;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.admin-box {
+    margin-top: 30px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background: #fefefe;
+    border-radius: 8px;
+}
+
+.admin-input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.btn-save {
+    background: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.btn-delete {
+    background: #d9534f;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    margin-left: 10px;
+    display: inline-block;
+}
+
+.status-text {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #666;
+}
+/* =========================================
+         GALÉRIA / PORTFÓLIÓ FELTÖLTÉS
+   ========================================= */
+
+.galetia_page{
+    padding: 20px;
+    display: flex;
+    justify-content: center; 
+}
+
+/* A fehér űrlap doboz */
+.galeria-page .form-container {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 500px; 
+    color: #333;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.galeria-page  h2 {
+    margin-top: 0;
+    color: #2c3e50;
+    border-bottom: 2px solid #f39c12; /* Egy kis narancs díszcsík */
+    padding-bottom: 10px;
+}
+
+/* Egységes szövegmező és legördülő stílus */
+.form-input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    display: block;
+    box-sizing: border-box; /* Ez biztosítja, hogy ne lógjon ki a keretből */
+}
+
+/* Fájlválasztó egyedi stílusa (egyszerűbb verzió) */
+.galeria-page .form-file {
+    margin-bottom: 25px;
+    display: block;
+}
+
+/* NARANCS gomb FEKETE írással */
+.galeria-page .btn-primary {
+    background-color: #f39c12; /* Narancssárga */
+    color: #000000; /* Fekete szöveg */
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%; /* Kitölti a doboz szélességét */
+    transition: background 0.3s ease;
+}
+
+.galeria-page .btn-primary:hover {
+    background-color: #e67e22; /* Sötétebb narancs ha az egeret kölelítjük*/
+}
+
+/* Címkék (label) stílusa */
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+/* kép törlése */
+.btn-delete {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 6px 12px;
+    background-color: #e74c3c;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+.btn-delete:hover {
+    background-color: #c0392b;
+}

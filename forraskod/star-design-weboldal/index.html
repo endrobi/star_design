@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Star Design – Egyedi grafikai tervezés</title>
+    <link rel="stylesheet" href="style.css?v=3" />
+    <!-- Google Fonts – La Belle Aurore (hero szöveghez) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=La+Belle+Aurore&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts – Montserrat (alap betűtípus) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- =============================================
+         RÖGZÍTETT FEJLÉC
+         position: fixed → mindig látható görgetéskor
+         z-index: 1000 → minden elem felett van
+         ============================================= -->
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="logo">
+          <img src="img/logo-fejlec.png" alt="Star Design logó" />
+          <span></span>
+        </div>
+        <!-- Navigációs menü
+             data-target attribútum → script.js sima görgetéshez használja -->
+        <button class="hamburger" id="hamburger" aria-label="Menü megnyitása">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav class="main-nav" id="main-nav">
+          <a href="#home" data-target="home">Főoldal</a>
+          <a href="#services" data-target="services">Szolgáltatások</a>
+          <a href="#about" data-target="about">Rólam</a>
+          <a href="#portfolio" data-target="portfolio">Portfólió</a>
+          <a href="#contact" data-target="contact">Kapcsolat</a>
+
+          <!-- Animált "Tervezz itt!" gomb – külön SVG körvonal-animációval -->
+          <a href="tervezes/projekt-index-final.html" class="nav-tervez-btn">
+            <span>Tervezz itt!</span>
+            <svg viewBox="0 0 100 34">
+              <rect x="1" y="1" width="98" height="32" rx="7" ry="7" />
+            </svg>
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- =============================================
+         HERO SZEKCIÓ (főoldali bevezető)
+         ============================================= -->
+    <section id="home" class="hero">
+      <div class="hero-overlay">
+        <!-- Háttérkép  -->
+        <img src="img/hero-hatter.png" alt="Hero háttér" class="hero-bg" />
+        <!-- Nagy logó a hero közepén -->
+        <div class="hero-logo-wrapper">
+          <img
+            src="img/logo-nagy.png"
+            alt="Star Design logó"
+            class="hero-logo"
+          />
+        </div>
+        <!-- Főcím  -->
+        <div class="hero-text-wrapper">
+          <h1 class="hero-text">Ön elképzeli, én papírra vetem</h1>
+        </div>
+        <!-- CTA gomb → portfólió szekcióra ugrik -->
+        <div class="hero-btn-wrapper">
+          <a class="btn primary" href="#portfolio" data-target="portfolio">
+            Fedezd fel a portfóliómat ›
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================
+         SZOLGÁLTATÁSOK SZEKCIÓ
+         Három egyenlő kártya auto-fit grid-ben
+         ============================================= -->
+    <section class="services" id="services">
+      <h2>Egyedi projektek, valódi történetek</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon"><img src="img/icon_1.png" alt="" /></div>
+          <h3>Arculattervezés &amp; Logó</h3>
+          <p>
+            Egyedi arculat és logó, amely tükrözi vállalkozásod egyedi jellegét.
+            Legyen formája az elképzeléseidnek, amelyek egy életre szólóan
+            köthető lesz az üzletedhez.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon"><img src="img/icon_2.png" alt="" /></div>
+          <h3>Plakát &amp; Reklámgrafika<br />pólóminta &amp; kitűző design</h3>
+          <p>
+            Egyedi plakátokat, pólómintákat és kitűzőket tervezek, amelyek
+            figyelmet keltenek. Legyen szó egyedi ajándékról vagy szeretett
+            márka népszerűsítéséről.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon"><img src="img/icon_3.png" alt="" /></div>
+          <h3>Grafikai tanácsadás</h3>
+          <p>
+            Segítek megtervezni és megvalósítani azt, amit Ön elképzelt!
+            Minőséget és stílust garantálok. Együtt hozzuk létre azt az egyedi
+            design munkát.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================
+         RÓLAM SZEKCIÓ
+         ============================================= -->
+    <section class="about" id="about">
+      <div class="about-image">
+        <img src="img/profilkep.jpg" alt="Móni portréja" class="about-img" />
+      </div>
+      <div class="about-content">
+        <h2>Ki van a toll mögött?</h2>
+        <p>
+          Szia! Móni vagyok és a szenvedélyem, hogy kreatív ötleteket
+          valósíthassak meg. Rajzolni gyerekkorom óta szeretek, és mostanában
+          animációt is tanulok, hogy még élethűbb történeteket mesélhessek el.
+        </p>
+        <p>
+          Minden projektben azt szeretem a legjobban, amikor az ügyfelek
+          elképzelése fokozatosan életre kel a papíron – vagy éppen a képernyőn.
+          Legyen szó logótervezésről, plakátról vagy akár egy animált
+          karakterről, mindig az a célom, hogy a végeredmény meghaladja a
+          várakozásokat.
+        </p>
+        <!-- Portfólióra ugró gomb -->
+        <a href="#portfolio" data-target="portfolio" class="about-button">
+          Kattints ide ›
+        </a>
+      </div>
+    </section>
+
+    <!-- =============================================
+         VÉLEMÉNYEK SZEKCIÓ
+         Három kártya flex-ben, mobilon egymás alá kerülnek
+         ============================================= -->
+    <section class="testimonials">
+      <!-- Pulzáló ikon a szekció tetején -->
+      <div class="testimonials-icon">
+        <img src="img/velemenyek_icon.png" alt="Vélemények ikon" />
+      </div>
+      <h2>Vélemények</h2>
+
+      <div class="testimonials-container">
+        <div class="testimonials-content1">
+          <p>
+            "Több alkalommal kerestem fel Mónit egy-egy fejben megszületett
+            ötlet megrajzolásával (nem volt mindig könnyű dolga, volt, hogy
+            nehezen egymáshoz egyeztethető dolgokat szerettünk volna
+            megjeleníteni egy alkotáson belül, de ő ezt simán megugrotta, nem
+            okozott problémát a megrajzolás és a design is mindig a toppon
+            volt). Készített már nekem/nekünk tervet: pólóra, kitűzőre,
+            pulcsira, baseball sapkára és eddig mindig kifogástalan munkákat
+            adott ki a keze közül. Nagyon lelkiismeretesen dolgozik, pontos,
+            precíz és megbízható, én csak ajánlani tudom mindenkinek, ha
+            szüksége van digitális rajzra/tervezésre!"
+          </p>
+          <p>Lentulay Anna, cserkész</p>
+        </div>
+
+        <div class="testimonials-content2">
+          <p>
+            "Egy nagyon kedves ember. Hamar elkészítette a rajzokat/mintákat,
+            amiket kértem, ha volt valami igazítás benne ő azt egyből
+            megcsinálta, nagyon ügyes és tehetséges."
+          </p>
+          <p>Zana Maja, Soproni diák</p>
+        </div>
+
+        <div class="testimonials-content3">
+          <p>
+            "Igazi öröm volt Mónikával együtt dolgozni a Leányvirág Vendégház
+            logóján. Nemcsak a kreativitása, hanem a precíz, nyitott hozzáállása
+            is kiemelkedő. Pontosan eltalálta azt a hangulatot és stílust, amit
+            a vendégház képvisel. Csak ajánlani tudom mindenkinek, aki egyedi,
+            igényes logót és arculatot szeretne!"
+          </p>
+          <p>Ábrahám Balázs, Leányvirág Vendégház marketinges</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================
+         PORTFÓLIÓ SZEKCIÓ
+         ============================================= -->
+    <section class="portfolio" id="portfolio">
+      <h2>Portfólió</h2>
+      <div class="portfolio-grid">
+        <div class="portfolio-item">
+          <h3>Kitűzők</h3>
+          <p>
+            Olyan kitűzők, amelyek nem csak kiegészítők, hanem személyes
+            történetek és stílusok hordozói is.
+          </p>
+          <img src="img/kituzok.png" alt="Kitűzők" />
+          <a href="portfolio/portfolio.php#kituzok" class="portfolio-button">
+            Nézd meg ›
+          </a>
+        </div>
+
+        <div class="portfolio-item">
+          <h3>Logók</h3>
+          <p>
+            Egyedi logók, amelyek egyszerre modern és időtlen. A legfőbb célom,
+            hogy a márkád kiemelkedjen a tömegből.
+          </p>
+          <img src="img/logok.png" alt="Logók" />
+          <a href="portfolio/portfolio.php#logok" class="portfolio-button">
+            Nézd meg ›
+          </a>
+        </div>
+
+        <div class="portfolio-item">
+          <h3>Pólóminták</h3>
+          <p>
+            Egyedi pólóminták, amelyek nem mindennapiak, de mindenki számára
+            vonzóak. Terv vagy aktuális kép alapján.
+          </p>
+          <img src="img/polomintak.png" alt="Pólóminták előnézet" />
+          <a
+            href="portfolio/portfolio.php#polomintak"
+            class="portfolio-button"
+          >
+            Nézd meg ›
+          </a>
+        </div>
+
+        <div class="portfolio-item">
+          <h3>Plakátok – meghívók</h3>
+          <p>
+            Figyelemfelkeltő plakátok és meghívók, amelyek nem csak informálnak,
+            de lenyűgöznek is. Megragadják a közönség figyelmét.
+          </p>
+          <img src="img/plakatok.png" alt="Plakátok előnézet" />
+          <a
+            href="portfolio/portfolio.php#plakatok-meghivok"
+            class="portfolio-button"
+          >
+            Nézd meg ›
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================
+         KAPCSOLAT SZEKCIÓ
+         ============================================= -->
+    <section class="contact" id="contact">
+      <!-- BAL OLDAL: Kapcsolatfelvételi űrlap -->
+      <div class="contact-form-wrapper">
+        <div class="info-icon">
+          <img src="img/kapcsolat.png" alt="Kapcsolat ikon" />
+        </div>
+        <h2>Kapcsolatfelvétel</h2>
+        <p>
+          Ha szeretnél velem dolgozni, küldj nekem üzenetet és hamarosan
+          válaszolni fogok neked!
+        </p>
+
+        <!-- Valódi PHP-s form
+             action="contact.php" → a szerver dolgozza fel
+             method="post"       → POST kérés, az adatok nem látszanak az URL-ben -->
+        <form
+          class="contact-form"
+          id="contact-form"
+          action="contact.php"
+          method="post"
+        >
+          <!-- Honeypot mező spam-szűréshez:
+               Ha robot tölti ki, a PHP kiszűri a kérést -->
+          <label class="hidden">
+            Ne töltsd ki ezt a mezőt
+            <input type="text" name="address" autocomplete="off" />
+          </label>
+          <input type="text" name="name" placeholder="Név" required />
+          <input type="email" name="email" placeholder="E-mail" required />
+          <textarea name="message" placeholder="Üzenet" required></textarea>
+          <button type="submit" class="submit-button">
+            Üzenet elküldése ›
+          </button>
+        </form>
+
+        <!-- Visszajelzés doboz – script.js tölti fel tartalmmal -->
+        <div id="form-message" class="form-message"></div>
+      </div>
+
+      <!-- JOBB OLDAL: Elérhetőségi adatok -->
+      <div class="contact-info">
+        <div class="info-content">
+          <div class="info-icon">
+            <img src="img/kerdes_icon.png" alt="Kérdés ikon" />
+          </div>
+          <h2>Kérdésed van?</h2>
+          <p>
+            Kérdésed támadt, vagy esetleg egy izgalmas feladatot szeretnél rám
+            bízni? Ne tartsd magadban!
+          </p>
+
+          <!-- E-mail link -->
+          <div class="contact-item">
+            <img src="img/e-mail_icon.png" alt="E-mail ikon" class="icon" />
+            <a href="mailto:monikajobs22@gmail.com">monikajobs22@gmail.com</a>
+          </div>
+
+          <!-- Telefonszám link -->
+          <div class="contact-item">
+            <img src="img/telefon_icon1.png" alt="Telefon ikon" class="icon" />
+            <a href="tel:+36202334013">+36 20 233 4013</a>
+          </div>
+
+          <!-- Tervező eszközre mutató link -->
+          <div class="kapcsolat-content">
+            <div class="info-icon">
+              <img src="img/tervezes.png" alt="Tervezés ikon" />
+            </div>
+            <h2>Megterveznéd?</h2>
+            <a href="tervezes/projekt-index-final.html" class="about-button">
+              Kattints ide!
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================
+         LÁBLÉC
+         Négy oszlopos flex layout:
+         ============================================= -->
+    <footer>
+      <div class="footer-logo">
+        <img src="img/logo-footer.png" alt="Star Design logó" />
+      </div>
+      <div class="footer-contact">
+        <h3>Elérhetőség</h3>
+        <p>+36 20 233 4013</p>
+        <a href="mailto:monikajobs22@gmail.com">monikajobs22@gmail.com</a>
+      </div>
+      <div class="footer-links">
+        <h3>Oldalak</h3>
+        <!-- Lábléc navigációs linkek -->
+        <a href="#home">Főoldal</a>
+        <a href="#services">Szolgáltatások</a>
+        <a href="#about">Rólam</a>
+        <a href="#portfolio">Portfólió</a>
+        <a href="#contact">Kapcsolat</a>
+      </div>
+      <div class="footer-icon">
+        <img src="img/icon-footer1.png" alt="Star Design dekor ikon" />
+      </div>
+    </footer>
+
+    <!-- =============================================
+         JAVASCRIPT BETÖLTÉSE
+         ============================================= -->
+    <script src="script.js"></script>
+  </body>
+</html>

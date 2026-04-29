@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projekt Tervező - Star Design</title>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- VÉGLEGES CSS -->
+    <link rel="stylesheet" href="projekt-style-final.css? V=2" />
+  </head>
+  <body>
+    <!-- Fő konténer -->
+    <div class="main-container">
+      <!-- Progress bar -->
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+
+      <!-- Lépés indikátorok -->
+      <div class="step-indicators" id="stepIndicators">
+        <!-- JavaScript generálja -->
+      </div>
+
+      <!-- Fő kártya -->
+      <div class="card-container">
+        <div id="formContent">
+          <!-- JavaScript generálja a lépéseket -->
+        </div>
+      </div>
+
+      <!-- Segítség szöveg -->
+      <div class="help-text">
+        Kérdésed van? Írj nekünk:
+        <a href="mailto:monikajobs22@gmail.com">monikajobs22@gmail.com</a>
+      </div>
+    </div>
+
+    <!-- Sikeres küldés modal -->
+    <div id="successModal" class="modal" style="display: none">
+      <div class="modal-content success">
+        <div class="modal-icon">✅</div>
+        <h2>Sikeresen elküldve!</h2>
+        <p>Köszönjük! Móni 24-48 órán belül válaszolni fog.</p>
+        <p class="project-id">Projektszám: <strong id="projectId"></strong></p>
+        <button onclick="location.reload()" class="btn-primary">
+          Vissza a főoldalra
+        </button>
+      </div>
+    </div>
+
+    <!-- Hiba modal -->
+    <div id="errorModal" class="modal" style="display: none">
+      <div class="modal-content error">
+        <div class="modal-icon">❌</div>
+        <h2>Hiba történt</h2>
+        <p id="errorMessage">Kérlek próbáld újra később!</p>
+        <button onclick="closeErrorModal()" class="btn-secondary">
+          Rendben
+        </button>
+      </div>
+    </div>
+
+    <!-- VÉGLEGES JavaScript -->
+    <script src="projekt-script-final.js"></script>
+
+    <a href="../index.html" class="back-button"> ← Vissza a főoldalra </a>
+  </body>
+</html>
